@@ -1,0 +1,44 @@
+gnb_id: 531
+gnb_id_bit_length: 32
+gnb_du_id: 1
+
+f1ap:
+  cu_cp_addr: 127.0.0.1
+  bind_addr: 127.0.0.3
+nru:
+  bind_addr: 127.0.0.3
+
+ru_sdr:
+  device_driver: uhd
+  device_args: type=b200,num_recv_frames=64,num_send_frames=64
+  srate: 23.04
+  otw_format: sc12
+  tx_gain: 50
+  rx_gain: 40
+
+
+cell_cfg:
+  dl_arfcn: 368500                                              # ARFCN of the downlink carrier>
+  band: 3                                                        # The NR band.
+  channel_bandwidth_MHz: 20                                       # Bandwith in MHz. Number of PR>
+  common_scs: 15                                                  # Subcarrier spacing in kHz use>
+  plmn: "00101"                                                   # PLMN broadcasted by the gNB.
+  tac: 7                                                          # Tracking area code (needs to >
+  pci: 2                                                          # Physical cell ID.
+  nof_antennas_dl: 1
+  nof_antennas_ul: 1
+  sector_id: 1
+  pdsch:
+    mcs_table: qam256
+
+log:
+  filename: /tmp/du.log
+  all_level: warning
+
+pcap:
+  mac_enable: false
+  mac_filename: /tmp/du_mac.pcap
+  f1ap_enable: false
+  f1ap_filename: /tmp/du_f1ap.pcap
+  f1u_enable: false
+  f1u_filename: /tmp/du_f1u.pcap
